@@ -1,25 +1,43 @@
-from words import words
+from words import words,example
 import random
+import string
 
+# PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
-def get_valid_word(words):  # Funcion para escoger una palabra
-    word = random.choice(words)
-    while '-' in word or ' ' in word:  # valida que la palabra no tenga
-        word = random.choice(words)   # guiones o espacios
+def get_valid_word(words):
+    word = random.choice(words) # randomly chooses something from the list
+    while '-' in word or ' ' in word:
+        word = random.choice(words)
     return word.upper()
 
+def hangman():
+    lives = 6;
+    
+    
+    word = get_valid_word(example)
+    
 
-print(get_valid_word(words))
+    word_letters = set(word)
+    
+    alphabet = set(string.ascii_uppercase)
+    used_letter = set()
+
+    while len(word_letters) > 0 and lives > 0:
+
+        user_letter = input("Guess a letter: ").upper()
+        if user_letter in alphabet - used_letter:
+            used_letter.add(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
+            else:
+                lives = lives - 1
+
+        elif user_letter in used_letter:
+            print("You have already used that character. Please try agein.")
+        
 
 
-def hangman():  # Funcion principal
-    lives = 6  # variable para almacenar las "vidas" del jugador
-    word = get_valid_word(words)
-    letter_word = set(word)
-    print("_ " * len(list(word)))
-    print(f"you have {lives} lives")
-    letter = input("choose a letter: ")
-    return letter_word
 
+    return word_letters
 
 print(hangman())
