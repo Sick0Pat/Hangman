@@ -1,22 +1,15 @@
-from words import words,example
-import random
+from words import get_valid_word
 import string
-
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
-def get_valid_word(words):
-    word = random.choice(words) # randomly chooses something from the list
-    while '-' in word or ' ' in word:
-        word = random.choice(words)
-    return word.upper()
 
 def hangman():
-    
-     # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
+    # Todo el codigo de abajo se ejecutara siempre y cuando no haya una 
+    # interrupcion del teclado.
     try:
         lives = 6
 
-        word = get_valid_word(example)
+        word = get_valid_word()
 
         word_letters = set(word)
 
@@ -35,19 +28,18 @@ def hangman():
                     lives = lives - 1
 
             elif user_letter in used_letter:
-                print("You have already used that character. Please try agein.")
+                print("You have already used that character." + 
+                "Please try agein.")
         # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
         if lives == 0:
             print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
         else:
             print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
-         
 
-     # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
+        # Si hay una interrupcion del teclado, se muestra este mensaje 
+        # y termina el programa.
     except KeyboardInterrupt:
         print("\n\nGracias por interrumpirme cabezon, bye.")
 
 
-    return word_letters
-
-print(hangman())
+hangman()
