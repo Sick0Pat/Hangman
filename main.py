@@ -36,6 +36,13 @@ def hangman():
 
             elif user_letter in used_letter:
                 print("You have already used that character. Please try agein.")
+        # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
+        if lives == 0:
+            print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
+        else:
+            print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
+         
+
      # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
     except KeyboardInterrupt:
         print("\n\nGracias por interrumpirme cabezon, bye.")
