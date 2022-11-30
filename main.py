@@ -10,6 +10,31 @@ def get_valid_word(words):
         word = random.choice(words)
     return word.upper()
 
+
+def writeWins():
+    file = open("match_history.txt", "a")
+    file.write("You win!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Your win/loss ratio is {wins}/{losses}")
+    file.close()
+
+
+def writeLosses():
+    file = open("match_history.txt", "a")
+    file.write("You lose!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Your win/loss ratio is {wins}/{losses}")
+    file.close() 
+
+
 def hangman():
     
      # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
@@ -38,8 +63,10 @@ def hangman():
                 print("You have already used that character. Please try agein.")
         # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
         if lives == 0:
+            writeLosses()
             print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
         else:
+            writeWins()
             print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
          
 
