@@ -126,8 +126,13 @@ def hangman():
                     |
                     """)
 
+                # Fabiola Vazquez - Mostrar las letras adivinas y faltantes
+                word_list = [letter if letter in used_letter else '_' for letter in word]
+                print('Current word: ', ' '.join(word_list))
+                
                 print('you have used these letters: ', ' '.join(used_letter))
                 user_letter = input("Guess a letter: ").upper()
+
                 if len(user_letter) !=1 :
                     print("usa solo una letra")
                 elif user_letter in alphabet - used_letter:
