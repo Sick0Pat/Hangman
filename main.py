@@ -69,6 +69,9 @@ def hangman():
             used_letter = set()
 
             while len(word_letters) > 0 and lives > 0:
+                
+                
+                
                 time.sleep(2)
                 borrarPantalla() #Dulce Badillo
                  # Mejora 1: Mensaje de bienvenida (Sáenz)
@@ -84,6 +87,8 @@ def hangman():
                 print('Current word: ', ' '.join(word_list))
                 
                 print('you have used these letters: ', ' '.join(used_letter))
+                print("You have  " , lives,  "  lives left and you dead")
+                
                 user_letter = input("Guess a letter: ").upper()
 
                 if len(user_letter) !=1 :
