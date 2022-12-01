@@ -1,6 +1,7 @@
 from words import get_valid_word
 import random
 import string
+import pyfiglet #HERNANDEZ CHIG JESUS LETRAS CON ASCII
 from termcolor import colored
 import os
 from monito import monito_images
@@ -18,7 +19,11 @@ def nombre():
     name = input("Enter your name: ")
     print("Hello " + name + "! Best of Luck!")
 
-
+#Susana Robles
+def clearHistory():
+    file = open("match_history.txt", "a")
+    file.seek(0)
+    file.truncate()
 
 
 def writeWins():
@@ -69,11 +74,15 @@ def hangman():
             used_letter = set()
 
             while len(word_letters) > 0 and lives > 0:
+                
+                
+                
                 time.sleep(2)
                 borrarPantalla() #Dulce Badillo
                  # Mejora 1: Mensaje de bienvenida (Sáenz)
                 print('*' * 55)
-                print('* Hello welcome! This is the hangman game, good luck! *')
+                bienvenida = pyfiglet.figlet_format('Hello welcome! This is the hangman game, good luck!')
+                print(bienvenida)
                 print('*' * 55)
 
                 #Mejora de impresion de monito Roberto Ibarra
@@ -84,6 +93,8 @@ def hangman():
                 print('Current word: ', ' '.join(word_list))
                 
                 print('you have used these letters: ', ' '.join(used_letter))
+                print("You have  " , lives,  "  lives left and you dead")
+                
                 user_letter = input("Guess a letter: ").upper()
 
                 if len(user_letter) !=1 :
@@ -93,12 +104,16 @@ def hangman():
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
                     else:
+                        lives = lives - 1
+                            # Diana Colon
+                            if lives == 1:
+                               print("🤨  pobrecito te queda una vida") #Diana colon
+                               #advertencia cuando queda una vida
+                        # Gerardo Kim - Mostrar si la letra no esta en la palabra
+                        print('\nYour letter,', user_letter, 'is not in the word.')
                         if help > 0:
                             print(colored("Input # to get a letter", "cyan"))
-                        lives = lives - 1
-                        if lives == 1:
-                            print("🤨  pobrecito te queda una vida") #Diana colon
-                            #advertencia cuando queda una vida
+
 
                 elif user_letter in used_letter:
                      print(colored('You have already used that character. Please try again.', 'yellow'))
@@ -134,6 +149,8 @@ def hangman():
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
             if input('Wanna play again? (Yes or No): ').upper().startswith('Y'): # Si lo que ingresa empieza con Y entonces es un Yes
+                if input('Wanna clear history? (Yes or No): ').upper().startswith('Y'):#Susana Robles
+                    clearHistory()
                 start = True
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
@@ -151,5 +168,25 @@ def hangman():
                 
     return word_letters  # MAX ALVAREZ-- Movi este return una tabulacion atras para sacarlo del while de start y que pudiese funcionar dicho while
 
+
+# Williams --Realizamos el menu de inicio para empezar el juego
+def show_menu():
+    while True:
+        print(f"                ********************** \n\
+                ********************** \n\
+                Human what do you want, wanna play with the life of others?\n\
+                   _____           O   \n\
+              * * /_____\ * *     `|`\n\
+              | | |_____| | |     ' '\n\
+                                 \n\
+                press m to start the game.\n\
+                Press x to exit.")
+        opcion = input()
+        if opcion == 'm':
+            print(hangman())
+        elif opcion == 'x':
+            break
+        input()
+        os.system("cls")
 nombre()
-print(hangman())
+show_menu()
