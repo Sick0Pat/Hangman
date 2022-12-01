@@ -1,3 +1,7 @@
+import requests
+import random
+import json
+
 example = ["tres cuatro", "cinco-seis","vamos aver","goodword"]
 words = [
     "aback",
@@ -2468,3 +2472,32 @@ words = [
     "zoom"
   ]
   
+
+"""
+Method that returns a valid word for the Hangman game
+"""
+
+
+def get_valid_word():
+    word = getWord() # randomly chooses something from the Service or List
+    while '-' in word or ' ' in word:
+        word = getWord()
+    return word
+
+
+"""
+API method, it will return a random word from the API RandomWord, 
+if it's unable to connect to it, it will return a random word frow words
+"""
+
+
+def getWord():
+    api_url = 'https://api.api-ninjas.com/v1/randomword'
+    response = requests.get(api_url, headers = {'X-Api-Key':
+    '0O9oPdKD5L4fvm2wIhWEig==AyYFerzIIIUqXdFl'})
+
+    if response.status_code == requests.codes.ok:
+        jsonResponse = json.loads(response.text)
+        return jsonResponse["word"].upper()
+    else:
+        return random.choice(words).upper
