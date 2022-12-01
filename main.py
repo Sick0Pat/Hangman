@@ -19,7 +19,11 @@ def nombre():
     name = input("Enter your name: ")
     print("Hello " + name + "! Best of Luck!")
 
-
+#Susana Robles
+def clearHistory():
+    file = open("match_history.txt", "a")
+    file.seek(0)
+    file.truncate()
 
 
 def writeWins():
@@ -140,6 +144,8 @@ def hangman():
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
             if input('Wanna play again? (Yes or No): ').upper().startswith('Y'): # Si lo que ingresa empieza con Y entonces es un Yes
+                if input('Wanna clear history? (Yes or No): ').upper().startswith('Y'):#Susana Robles
+                    clearHistory()
                 start = True
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
