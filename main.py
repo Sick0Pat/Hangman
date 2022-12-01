@@ -10,6 +10,31 @@ def get_valid_word(words):
         word = random.choice(words)
     return word.upper()
 
+
+def writeWins():
+    file = open("match_history.txt", "a")
+    file.write("You win!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    file.close()
+
+
+def writeLosses():
+    file = open("match_history.txt", "a")
+    file.write("You lose!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    file.close() 
+
+
 def hangman():
     
      # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
@@ -39,9 +64,10 @@ def hangman():
         # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
         if lives == 0:
             print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
+            writeLosses()
         else:
             print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
-         
+            writeWins()
 
      # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
     except KeyboardInterrupt:
