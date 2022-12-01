@@ -1,6 +1,7 @@
 from words import get_valid_word
 import random
 import string
+import pyfiglet #HERNANDEZ CHIG JESUS LETRAS CON ASCII
 from termcolor import colored
 import os
 from monito import monito_images
@@ -73,7 +74,8 @@ def hangman():
                 borrarPantalla() #Dulce Badillo
                  # Mejora 1: Mensaje de bienvenida (Sáenz)
                 print('*' * 55)
-                print('* Hello welcome! This is the hangman game, good luck! *')
+                bienvenida = pyfiglet.figlet_format('Hello welcome! This is the hangman game, good luck!')
+                print(bienvenida)
                 print('*' * 55)
 
                 #Mejora de impresion de monito Roberto Ibarra
