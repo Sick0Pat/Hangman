@@ -1,6 +1,7 @@
 from words import words,example
 import random
 import string
+import os
 
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
@@ -34,6 +35,11 @@ def writeLosses():
     print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
     file.close() 
 
+def borrarPantalla(): #Limpiar pantalla Dulce Badillo
+    if os.name == "posix":
+        os.system ("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system ("cls")
 
 def hangman():
     # MAX ALVAREZ
@@ -52,6 +58,7 @@ def hangman():
             used_letter = set()
 
             while len(word_letters) > 0 and lives > 0:
+                borrarPantalla() #Dulce Badillo
 
                 print('you have used these letters: ', ' '.join(used_letter))
                 user_letter = input("Guess a letter: ").upper()
