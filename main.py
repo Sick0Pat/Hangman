@@ -61,6 +61,10 @@ def hangman():
 
             while len(word_letters) > 0 and lives > 0:
                 borrarPantalla() #Dulce Badillo
+                 # Mejora 1: Mensaje de bienvenida (Sáenz)
+                 print('*' * 55)
+                print('* Hello welcome! This is the hangman game, good luck! *')
+                print('*' * 55)
 
                 if lives == 6:
                     ##Sarahi Bañuelos - Monito
@@ -165,6 +169,12 @@ def hangman():
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
             # MAX ALVAREZ
+
+                # Mejora 2: Mensaje de despedida/fin del juego (Sáenz)
+                print('*' * 29)
+                print('* Good luck next time, bye! *')
+                print('* Made by group 372 *') # Mejora 3: Mensaje de creditos del juego (Sáenz)
+                print('*' * 29)
             
             # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
         except KeyboardInterrupt:
