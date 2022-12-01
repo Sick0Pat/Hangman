@@ -48,7 +48,7 @@ def hangman():
         try:
             lives = 6
             word = get_valid_word(example)
-
+            help = 1
             word_letters = set(word)
 
             alphabet = set(string.ascii_uppercase)
@@ -63,16 +63,26 @@ def hangman():
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
                     else:
+                        if help > 0:
+                            print(colored("Input # to get a letter", "cyan"))
                         lives = lives - 1
 
                 elif user_letter in used_letter:
-                    print("You have already used that character. Please try agein.")
+                     print(colored('You have already used that character. Please try again.', 'yellow'))
+                
+                if user_letter == "#":
+                    if help > 0:
+                        help -= 1
+                        print(colored("Try with", "blue"), colored(random.choice(word), "blue"))
+                    else:
+                        print(colored("You don't have any help :(", "cyan"))
+                    
             # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
             if lives == 0:
-                print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
+                print(colored('Te la pelliscaste!, Nimodo. La palabra era: ', 'red'), word)
                 writeLosses()
             else:
-                print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
+                print(colored('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!', 'green'))
                 writeWins()
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
