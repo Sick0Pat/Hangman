@@ -19,7 +19,7 @@ def writeWins():
     history = file.read()
     wins = history.count("You win!")
     losses = history.count("You lose!")
-    print(f"Your win/loss ratio is {wins}/{losses}")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
     file.close()
 
 
@@ -31,7 +31,7 @@ def writeLosses():
     history = file.read()
     wins = history.count("You win!")
     losses = history.count("You lose!")
-    print(f"Your win/loss ratio is {wins}/{losses}")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
     file.close() 
 
 
@@ -63,12 +63,11 @@ def hangman():
                 print("You have already used that character. Please try agein.")
         # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
         if lives == 0:
-            writeLosses()
             print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
+            writeLosses()
         else:
-            writeWins()
             print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
-         
+            writeWins()
 
      # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
     except KeyboardInterrupt:
