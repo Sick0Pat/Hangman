@@ -137,10 +137,10 @@ def hangman():
                         word_letters.remove(user_letter)
                     else:
                         lives = lives - 1
-                            # Diana Colon
-                            if lives == 1:
-                               print("🤨  pobrecito te queda una vida") #Diana colon
-                               #advertencia cuando queda una vida
+                        # Diana Colon
+                        if lives == 1:
+                            print("🤨  pobrecito te queda una vida") #Diana colon
+                            #advertencia cuando queda una vida
                         # Gerardo Kim - Mostrar si la letra no esta en la palabra
                         print('\nYour letter,', user_letter, 'is not in the word.')
                         if help > 0:
