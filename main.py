@@ -65,6 +65,12 @@ def hangman():
        
         # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
         try:
+
+            #Cambio de Andres Karim Ruiz Del Cid: Agregar la funcionalidad de que el usuario elija una dificultad, si elige Easy, el programa le revelara algunas letras de la palabra
+            print("Easy")
+            print("Hard")
+            difficulty = input("Choose the difficulty: ").upper()
+
             lives = 6
             word = get_valid_word()
             help = 1
@@ -72,6 +78,30 @@ def hangman():
 
             alphabet = set(string.ascii_uppercase)
             used_letter = set()
+
+           #Obtenemos la cantidad de la palabra
+            quantity=len(word)
+            if difficulty=="EASY":
+                quantityBetween2=0
+                wordRandom=''
+                #dividimos entre 2 y ese valo lo metemos a un for
+                quantityBetween2=quantity/2
+                for f in range(int(quantityBetween2)):
+
+                    #En este for, buscamos una cantidad X de letras dentro de la palabra de forma aleatoria
+                    wordRandom=word[random.randrange(quantity)]
+                for x4 in range(quantity):
+
+                    if(wordRandom in word[x4]):
+                        #Aqui las agregamos a las letras usadas para que el usuario tenga que poner menos letras
+                        used_letter.add(wordRandom)
+                        #aqui realizamos un ordenamiento para restarle las letras random a la palabra original y asi hacerla mas corta para que el usuario adivine en menos intentos
+                        word_letters=word_letters-{wordRandom}
+                        word_letters2=set(word_letters)
+                        word_letters=word_letters2
+                print("Welcome to easy version, you have "+str(lives)+" lives")
+            elif difficulty=="HARD":
+                print("Welcome to hard version, you have "+str(lives)+" lives")
 
             while len(word_letters) > 0 and lives > 0:
                 
@@ -90,8 +120,8 @@ def hangman():
 
                 # Fabiola Vazquez - Mostrar las letras adivinas y faltantes
                 word_list = [letter if letter in used_letter else '_' for letter in word]
-                print('Current word: ', ' '.join(word_list))
                 
+                print('Current word: ', ' '.join(word_list))
                 print('you have used these letters: ', ' '.join(used_letter))
                 print("You have  " , lives,  "  lives left and you dead")
                 
@@ -101,7 +131,9 @@ def hangman():
                     print("usa solo una letra")
                 elif user_letter in alphabet - used_letter:
                     used_letter.add(user_letter)
+                    
                     if user_letter in word_letters:
+
                         word_letters.remove(user_letter)
                     else:
                         lives = lives - 1
