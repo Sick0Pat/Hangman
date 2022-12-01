@@ -55,7 +55,9 @@ def hangman():
 
                 print('you have used these letters: ', ' '.join(used_letter))
                 user_letter = input("Guess a letter: ").upper()
-                if user_letter in alphabet - used_letter:
+                if len(user_letter) !=1 :
+                    print("usa solo una letra")
+                elif user_letter in alphabet - used_letter:
                     used_letter.add(user_letter)
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
