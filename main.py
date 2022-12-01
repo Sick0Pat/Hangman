@@ -36,6 +36,7 @@ def writeWins():
     losses = history.count("You lose!")
     print(colored('Veces que te la has pellizcado:', 'magenta'), losses)
     print(colored('Veces que has sido digno:', 'blue'), losses)
+    print("Veces que has jugado en total: ", losses + wins)
     file.close()
 
 
@@ -49,6 +50,7 @@ def writeLosses():
     losses = history.count("You lose!")
     print(colored('Veces que te la has pellizcado:', 'magenta'), losses)
     print(colored('Veces que has sido digno:', 'blue'), losses)
+    print("Veces que has jugado en total: ", losses + wins)
     file.close() 
 
 def borrarPantalla(): #Limpiar pantalla Dulce Badillo
