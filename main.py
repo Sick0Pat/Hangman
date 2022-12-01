@@ -62,6 +62,62 @@ def hangman():
             while len(word_letters) > 0 and lives > 0:
                 borrarPantalla() #Dulce Badillo
 
+                if lives == 6:
+                    ##Sarahi Bañuelos - Monito
+                    print("""
+                    -------------
+                    | /          |
+                    |/
+                    |
+                    |
+                    |
+                    """)
+                elif lives == 5:
+                    print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |
+                    |
+                    |
+                    """)
+                elif lives == 4:
+                    print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |            | 
+                    |            
+                    |
+                    """)
+                elif lives == 3:
+                    print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |           `|   
+                    |            
+                    |
+                    """)
+                elif lives == 2:
+                    print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |           `|`   
+                    |            
+                    |
+                    """)
+                elif lives == 1:
+                    print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |           `|`  
+                    |           ' 
+                    |
+                    """)
+
                 print('you have used these letters: ', ' '.join(used_letter))
                 user_letter = input("Guess a letter: ").upper()
                 if len(user_letter) !=1 :
@@ -87,8 +143,18 @@ def hangman():
                     
             # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
             if lives == 0:
+                ##Sarahi Bañuelos - monito
+                print("""
+                    -------------
+                    | /          |
+                    |/           O   
+                    |           `|`   
+                    |           ' '
+                    |
+                    """)
                 print(colored('Te la pelliscaste!, Nimodo. La palabra era: ', 'red'), word)
                 writeLosses()
+
             else:
                 print(colored('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!', 'green'))
                 writeWins()
