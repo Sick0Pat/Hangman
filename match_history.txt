@@ -4,3 +4,5 @@ You lose!
 You win!
 You lose!
 You lose!
+You lose!
+You lose!

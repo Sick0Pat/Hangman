@@ -4,8 +4,13 @@ import string
 from termcolor import colored
 import os
 import time #Guillermo Islas Temporizador
+import pyttsx3 #importar libreria con pip install pyttsx3
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 ## Instalar el termcolor 
+
+#Erick Daniel Carrillo Jimenez
+engine = pyttsx3.init() # se inicializa
+engine.setProperty('rate',155) # se coloca la velocidad de reproduccion
 
 ## Alain Gonzalez Ambris 
 def nombre():
@@ -161,10 +166,14 @@ def hangman():
                     |
                     """)
                 print(colored('Te la pelliscaste!, Nimodo. La palabra era: ', 'red'), word)
+                engine.say("ya te moriste") # texto a voz si pierde
+                engine.runAndWait()
                 writeLosses()
 
             else:
                 print(colored('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!', 'green'))
+                engine.say("felicidades") #voz si gana
+                engine.runAndWait()
                 writeWins()
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
