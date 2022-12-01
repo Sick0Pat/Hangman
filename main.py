@@ -148,5 +148,25 @@ def hangman():
                 
     return word_letters  # MAX ALVAREZ-- Movi este return una tabulacion atras para sacarlo del while de start y que pudiese funcionar dicho while
 
+
+# Williams --Realizamos el menu de inicio para empezar el juego
+def show_menu():
+    while True:
+        print(f"                ********************** \n\
+                ********************** \n\
+                Human what do you want, wanna play with the life of others?\n\
+                   _____           O   \n\
+              * * /_____\ * *     `|`\n\
+              | | |_____| | |     ' '\n\
+                                 \n\
+                press m to start the game.\n\
+                Press x to exit.")
+        opcion = input()
+        if opcion == 'm':
+            print(hangman())
+        elif opcion == 'x':
+            break
+        input()
+        os.system("cls")
 nombre()
-print(hangman())
+show_menu()
