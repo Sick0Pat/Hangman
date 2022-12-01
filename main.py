@@ -4,6 +4,14 @@ import string
 from termcolor import colored
 import os
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
+## Instalar el termcolor 
+
+## Alain Gonzalez Ambris 
+def nombre():
+    name = input("Enter your name: ")
+    print("Hello " + name + "! Best of Luck!")
+
+
 
 def get_valid_word(words):
     word = random.choice(words) # randomly chooses something from the list
@@ -62,7 +70,7 @@ def hangman():
             while len(word_letters) > 0 and lives > 0:
                 borrarPantalla() #Dulce Badillo
                  # Mejora 1: Mensaje de bienvenida (Sáenz)
-                 print('*' * 55)
+                print('*' * 55)
                 print('* Hello welcome! This is the hangman game, good luck! *')
                 print('*' * 55)
 
@@ -182,4 +190,5 @@ def hangman():
                 
     return word_letters  # MAX ALVAREZ-- Movi este return una tabulacion atras para sacarlo del while de start y que pudiese funcionar dicho while
 
+nombre()
 print(hangman())
