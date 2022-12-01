@@ -1,8 +1,8 @@
 from words import get_valid_word
 import random
 import string
+from termcolor import colored
 import os
-
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
 
@@ -14,7 +14,8 @@ def writeWins():
     history = file.read()
     wins = history.count("You win!")
     losses = history.count("You lose!")
-    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    print(colored('Veces que te la has pellizcado:', 'magenta'), losses)
+    print(colored('Veces que has sido digno:', 'blue'), losses)
     file.close()
 
 
@@ -26,7 +27,8 @@ def writeLosses():
     history = file.read()
     wins = history.count("You win!")
     losses = history.count("You lose!")
-    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    print(colored('Veces que te la has pellizcado:', 'magenta'), losses)
+    print(colored('Veces que has sido digno:', 'blue'), losses)
     file.close() 
 
 def borrarPantalla(): #Limpiar pantalla Dulce Badillo
@@ -45,7 +47,7 @@ def hangman():
         try:
             lives = 6
             word = get_valid_word()
-
+            help = 1
             word_letters = set(word)
 
             alphabet = set(string.ascii_uppercase)
@@ -53,6 +55,10 @@ def hangman():
 
             while len(word_letters) > 0 and lives > 0:
                 borrarPantalla() #Dulce Badillo
+                 # Mejora 1: Mensaje de bienvenida (Sáenz)
+                 print('*' * 55)
+                print('* Hello welcome! This is the hangman game, good luck! *')
+                print('*' * 55)
 
                 if lives == 6:
                     ##Sarahi Bañuelos - Monito
@@ -119,10 +125,20 @@ def hangman():
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
                     else:
+                        if help > 0:
+                            print(colored("Input # to get a letter", "cyan"))
                         lives = lives - 1
 
                 elif user_letter in used_letter:
-                    print("You have already used that character. Please try agein.")
+                     print(colored('You have already used that character. Please try again.', 'yellow'))
+                
+                if user_letter == "#":
+                    if help > 0:
+                        help -= 1
+                        print(colored("Try with", "blue"), colored(random.choice(word), "blue"))
+                    else:
+                        print(colored("You don't have any help :(", "cyan"))
+                    
             # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
             if lives == 0:
                 ##Sarahi Bañuelos - monito
@@ -134,11 +150,11 @@ def hangman():
                     |           ' '
                     |
                     """)
-                print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
+                print(colored('Te la pelliscaste!, Nimodo. La palabra era: ', 'red'), word)
                 writeLosses()
 
             else:
-                print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
+                print(colored('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!', 'green'))
                 writeWins()
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
@@ -147,6 +163,12 @@ def hangman():
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
             # MAX ALVAREZ
+
+                # Mejora 2: Mensaje de despedida/fin del juego (Sáenz)
+                print('*' * 29)
+                print('* Good luck next time, bye! *')
+                print('* Made by group 372 *') # Mejora 3: Mensaje de creditos del juego (Sáenz)
+                print('*' * 29)
             
             # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
         except KeyboardInterrupt:
