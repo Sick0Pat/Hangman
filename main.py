@@ -3,6 +3,7 @@ import random
 import string
 from termcolor import colored
 import os
+import time #Guillermo Islas Temporizador
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
 def get_valid_word(words):
@@ -60,6 +61,7 @@ def hangman():
             used_letter = set()
 
             while len(word_letters) > 0 and lives > 0:
+                time.sleep(2)
                 borrarPantalla() #Dulce Badillo
                  # Mejora 1: Mensaje de bienvenida (Sáenz)
                  print('*' * 55)
