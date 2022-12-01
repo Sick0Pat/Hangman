@@ -93,9 +93,11 @@ def hangman():
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
                     else:
+                        lives = lives - 1
+                        # Gerardo Kim - Mostrar si la letra no esta en la palabra
+                        print('\nYour letter,', user_letter, 'is not in the word.')
                         if help > 0:
                             print(colored("Input # to get a letter", "cyan"))
-                        lives = lives - 1
 
                 elif user_letter in used_letter:
                      print(colored('You have already used that character. Please try again.', 'yellow'))
