@@ -96,6 +96,9 @@ def hangman():
                         if help > 0:
                             print(colored("Input # to get a letter", "cyan"))
                         lives = lives - 1
+                        if lives == 1:
+                            print("🤨  pobrecito te queda una vida") #Diana colon
+                            #advertencia cuando queda una vida
 
                 elif user_letter in used_letter:
                      print(colored('You have already used that character. Please try again.', 'yellow'))
