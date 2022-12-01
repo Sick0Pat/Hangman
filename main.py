@@ -43,6 +43,11 @@ def hangman():
        
         # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
         try:
+            # Mejora 1: Mensaje de bienvenida (Sáenz)
+            print('*' * 55)
+            print('* Hello welcome! This is the hangman game, good luck! *')
+            print('*' * 55)
+
             lives = 6
             word = get_valid_word(example)
 
@@ -79,6 +84,13 @@ def hangman():
                 start = True
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
+                
+                # Mejora 2: Mensaje de despedida/fin del juego (Sáenz)
+                print('*' * 29)
+                print('* Good luck next time, bye! *')
+                print('* Made by group 372 *') # Mejora 3: Mensaje de creditos del juego (Sáenz)
+                print('*' * 29)
+
             # MAX ALVAREZ
             
             # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
