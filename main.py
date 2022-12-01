@@ -1,15 +1,9 @@
-from words import words,example
+from words import get_valid_word
 import random
 import string
 import os
 
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
-
-def get_valid_word(words):
-    word = random.choice(words) # randomly chooses something from the list
-    while '-' in word or ' ' in word:
-        word = random.choice(words)
-    return word.upper()
 
 
 def writeWins():
@@ -50,7 +44,7 @@ def hangman():
         # Todo el codigo de abajo se ejecutara siempre y cuando no haya una interrupcion del teclado.
         try:
             lives = 6
-            word = get_valid_word(example)
+            word = get_valid_word()
 
             word_letters = set(word)
 
