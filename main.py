@@ -3,6 +3,7 @@ import random
 import string
 from termcolor import colored
 import os
+from monito import monito_images
 import time #Guillermo Islas Temporizador
 import pyttsx3 #importar libreria con pip install pyttsx3
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
@@ -75,64 +76,16 @@ def hangman():
                 print('* Hello welcome! This is the hangman game, good luck! *')
                 print('*' * 55)
 
-                if lives == 6:
-                    ##Sarahi Bañuelos - Monito
-                    print("""
-                    -------------
-                    | /          |
-                    |/
-                    |
-                    |
-                    |
-                    """)
-                elif lives == 5:
-                    print("""
-                    -------------
-                    | /          |
-                    |/           O   
-                    |
-                    |
-                    |
-                    """)
-                elif lives == 4:
-                    print("""
-                    -------------
-                    | /          |
-                    |/           O   
-                    |            | 
-                    |            
-                    |
-                    """)
-                elif lives == 3:
-                    print("""
-                    -------------
-                    | /          |
-                    |/           O   
-                    |           `|   
-                    |            
-                    |
-                    """)
-                elif lives == 2:
-                    print("""
-                    -------------
-                    | /          |
-                    |/           O   
-                    |           `|`   
-                    |            
-                    |
-                    """)
-                elif lives == 1:
-                    print("""
-                    -------------
-                    | /          |
-                    |/           O   
-                    |           `|`  
-                    |           ' 
-                    |
-                    """)
+                #Mejora de impresion de monito Roberto Ibarra
+                print(monito_images[-lives-1])
 
+                # Fabiola Vazquez - Mostrar las letras adivinas y faltantes
+                word_list = [letter if letter in used_letter else '_' for letter in word]
+                print('Current word: ', ' '.join(word_list))
+                
                 print('you have used these letters: ', ' '.join(used_letter))
                 user_letter = input("Guess a letter: ").upper()
+
                 if len(user_letter) !=1 :
                     print("usa solo una letra")
                 elif user_letter in alphabet - used_letter:
