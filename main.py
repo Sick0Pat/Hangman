@@ -80,6 +80,7 @@ def hangman():
 
             alphabet = set(string.ascii_uppercase)
             used_letter = set()
+            hangman_name = input("Choose a name for a hangman: ")# Erick vera - Nombre del hangman
 
            #Obtenemos la cantidad de la palabra
             quantity=len(word)
@@ -127,6 +128,8 @@ def hangman():
                 print('you have used these letters: ', ' '.join(used_letter))
                 print("You have  " , lives,  "  lives left and you dead")
                 
+                print(hangman_name + ": You did it!!!") # Erick vera - Nombre del hangman
+                
                 user_letter = input("Guess a letter: ").upper()
 
                 if len(user_letter) !=1 :
@@ -145,6 +148,9 @@ def hangman():
                             #advertencia cuando queda una vida
                         # Gerardo Kim - Mostrar si la letra no esta en la palabra
                         print('\nYour letter,', user_letter, 'is not in the word.')
+                        
+                        print(hangman_name + ": OHH NOO!!!")# Erick vera - Nombre del hangman
+                        
                         if help > 0:
                             print(colored("Input # to get a letter", "cyan"))
 
@@ -171,6 +177,7 @@ def hangman():
                     |
                     """)
                 print(colored('Te la pelliscaste!, Nimodo. La palabra era: ', 'red'), word)
+                print(hangman_name + ": I'll be back")# Erick vera - Nombre del hangman
                 engine.say("ya te moriste") # texto a voz si pierde
                 engine.runAndWait()
                 writeLosses()
