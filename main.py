@@ -1,6 +1,7 @@
 from words import words,example
 import random
 import string
+import time
 
 # PATRICK OWNER OF BASE HANGMAN REPOSITORY
 
@@ -34,6 +35,7 @@ def writeLosses():
     print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
     file.close() 
 
+empiezo = time.time() #comienza el contador
 
 def hangman():
     
@@ -77,3 +79,6 @@ def hangman():
     return word_letters
 
 print(hangman())
+
+termino = time.time() # fin del temporizador
+print(" Tardaste ", termino - empiezo, "segundos en terminar el juego" )
