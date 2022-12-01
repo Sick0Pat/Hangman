@@ -10,6 +10,31 @@ def get_valid_word(words):
         word = random.choice(words)
     return word.upper()
 
+
+def writeWins():
+    file = open("match_history.txt", "a")
+    file.write("You win!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    file.close()
+
+
+def writeLosses():
+    file = open("match_history.txt", "a")
+    file.write("You lose!\n")
+    file.close()
+    file = open("match_history.txt", "r")
+    history = file.read()
+    wins = history.count("You win!")
+    losses = history.count("You lose!")
+    print(f"Veces que te la has pellizcado: {losses}\n Veces que has sido digno: {wins}")
+    file.close() 
+
+
 def hangman():
     # MAX ALVAREZ
     start = True  # Variable para empezar el juego al menos la primera vez
@@ -42,18 +67,19 @@ def hangman():
             # Aqui se muestra si ganaste o perdiste - Jose Pablo Gonzalez Barba
             if lives == 0:
                 print('Te la pelliscaste!, Nimodo. La palabra era: ', word)
-
+                writeLosses()
             else:
                 print('AHUEVO! Eres digno de poder ser amigo de ChemssDoggie!!')
+                writeWins()
 
             # MAX ALVAREZ --Pregunta si quiere volver a jugar o no y modifica el valor de start
             if input('Wanna play again? (Yes or No): ').upper().startswith('Y'): # Si lo que ingresa empieza con Y entonces es un Yes
                 start = True
             else:
                 start = False # Se modifica start, lo que afecta el while de start y finaliza el juego
-           # MAX ALVAREZ
-
-        # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
+            # MAX ALVAREZ
+            
+            # Si hay una interrupcion del teclado, se muestra este mensaje y termina el programa.
         except KeyboardInterrupt:
             print("\n\nGracias por interrumpirme cabezon, bye.")
                 
