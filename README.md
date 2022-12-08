@@ -2,7 +2,7 @@
 
 >Programming with Python
 
-The purpose of this repository was to collaboratively develop the popular game `Hangman` by the students of group 372, currently causing the 7th semester of the Bachelor´s in Computer Science at the Autonomous University of Baja California - Faculty of Accounting and Administration.
+This repository was created to collaboratively develop the popular game `Hangman` by the students of 7th semester of their Computer Science Degree at the Autonomous University of Baja California - Faculty of Accounting and Administration.
 
 The game was to be done entirely using Python and each student had to collaborate by implementing a feature, an improvement or a bugfix through a `pull request`
 
